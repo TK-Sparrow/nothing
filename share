@@ -39,4 +39,4 @@ SQL> insert into virtusausers values('admin2',1, '$2a$10$4uNZaVo1oNUVYQIsNMSDF.t
 SQL> insert into virtusausers values('admin2',1, '$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS');
 
 
-
+insert into user_roles values('admin','Admin');
