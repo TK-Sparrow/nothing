@@ -3,3 +3,40 @@ create table virtusausers(username varchar(50) not null primary key,password var
  create table user_roles(username varchar(50) not null,role varchar(50) not null,constraint fk_user_roles foreign key(username) references virtusausers(username));
  
   create unique index ix_auth_username on user_roles(username,role);
+
+
+
+alter table virtusausers drop column password;
+
+Table altered.
+
+SQL> alter table virtusausers add password varchar(60) not null;
+
+Table altered.
+
+SQL> insert into virtusauser values('admin','$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS',1);
+insert into virtusauser values('admin','$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS',1)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> insert into virtusausers values('admin','$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS',1);
+insert into virtusausers values('admin','$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS',1)
+                                        *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> insert into virtusausers values('admin',1, '$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS');
+
+1 row created.
+
+SQL> insert into virtusausers values('admin2',1, '$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS');
+
+1 row created.
+
+SQL> insert into virtusausers values('admin2',1, '$2a$10$4uNZaVo1oNUVYQIsNMSDF.t.Tq.6wLhTplzeIDFYZUIrjwzCaDUuS');
+
+
+
